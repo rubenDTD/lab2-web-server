@@ -14,4 +14,4 @@ Cambio
 
 Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
- | | |
+[motinsa](https://github.com/motinsa/lab2-web-server/tree/work) | 797610 | [![Build Status](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml)  
