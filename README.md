@@ -15,5 +15,3 @@ Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
 [GueorguiKachan](https://github.com/GueorguiKachan/lab2-web-server/tree/work) |794999 | [![Build Status](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/ci.yml) | 
 
-
-  
