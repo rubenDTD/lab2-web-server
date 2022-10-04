@@ -13,4 +13,4 @@ Some ideas for obtaining a :gift: if you are the first that:
 
 Repository | NIA    | GitHub Action                                                                                                                                                     | Has gift
 ----------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----
-[jbuil](https://github.com/jbuil/lab2-web-server/tree/work)| 797285 | [![Build Status](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml) |
+[jbuil](https://github.com/jbuil/lab2-web-server/tree/work) | 797285 | [![Build Status](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml) |
