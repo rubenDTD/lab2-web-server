@@ -11,6 +11,6 @@ Some ideas for obtaining a :gift: if you are the first that:
 - **CORS what?**: Enables [CORS](https://developer.mozilla.org/es/docs/Web/HTTP/CORS) support and provides a JUnit-based test to prove it.
 - **No more static**: Replace the `error.html` file by a `ControllerAdvice` and provides a JUnit-based test to prove it.
 
-Repository | NIA    | GitHub Action                                                                                                                                                    | Has gift
-----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----
-[jbuil](https://github.com/jbuil/lab2-web-server/tree/work)| 797285 | ![Build Status](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml) |
+Repository | NIA    | GitHub Action                                                                                                                                                     | Has gift
+----------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----
+[jbuil](https://github.com/jbuil/lab2-web-server/tree/work)| 797285 | [![Build Status](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/jbuil/lab2-web-server/actions/workflows/ci.yml) |
