@@ -33,6 +33,12 @@ Make changes to the files, commit the changes to the history and push the branch
 git push origin work
 ```
 
+If you want to test the server, just run:
+
+```bash
+./gradlew bootRun
+```
+
 ## Primary tasks
 
 - Customize whitelabel error error page
@@ -92,7 +98,8 @@ It is configured to run before compiling the code.
 - Create a `RestController` that exposes the service:
 
   ```kotlin
-  @RestController TimeController(val service: TimeProvider) {
+  @RestController 
+  class TimeController(val service: TimeProvider) {
     @GetMapping("/time")
     fun time() = service.now().toDTO()
   }
@@ -118,11 +125,16 @@ It is configured to run before compiling the code.
 
   Move the file `localhost.p12` to `src/main/resources`.
 
+  **Note for windows users:** Unless you use a WSL Linux Distro, you will need to use [OpenSSL for Windows](https://wiki.openssl.org/index.php/Binaries).
+
 - Create an `application.properties` file in `src/main/resources` with the following content follows:
 
   ```properties
+  # Enable HTTP/2
   server.http2.enabled=true
+  # Change the port to 8444
   server.port=8443
+  # Enable HTTPS
   server.ssl.key-store-type=PKCS12
   server.ssl.key-store=classpath:localhost.p12
   server.ssl.key-store-password=<the export password>
@@ -136,8 +148,12 @@ It is configured to run before compiling the code.
 1. For the generic error file, running in the terminal:
 
    ```sh
-   curl -k -LH "Accept: text/html,*/*;q=0.9" -sI https://127.0.0.1:8443/  
+   curl -k -LH "Accept: text/html,*/*;q=0.9" -i https://127.0.0.1:8443/  
    ```
+
+  `-k` disables the certificate validation,
+  `-LK "Accept: text/html,*/*;q=0.9"` adds the `Accept` header to the request,
+  `-i` specify that the ouptut should include the HTTP response headers
 
    should output in the terminal something similar to:
 
@@ -157,7 +173,7 @@ It is configured to run before compiling the code.
 1. For the HTTP/2 and SSL support, running in the terminal:
 
    ```sh
-   curl -k -LH "Accept: text/html,*/*;q=0.9" -sI https://127.0.0.1:8443/time  
+   curl -k -LH "Accept: text/html,*/*;q=0.9" -i https://127.0.0.1:8443/time  
    ```
 
    should output in the terminal something similar to:
