@@ -9,7 +9,10 @@ This laboratory is not a speed competition.
 Fork this repository.
 Next you will have <https://github.com/UNIZAR-30246-WebEngineering/lab2-web-server> cloned in `https://github.com/your-github-username/ab2-web-server`.
 
-Go to your repository and click in `Code` on the `main` button and create a branch named `work`.
+By default, GitHub Actions is disabled for your forked repository.
+Go to `https://github.com/your-github-username/lab2-web-server/actions` and enable them.
+
+Next, go to your repository and click in `Code` on the `main` button and create a branch named `work`.
 
 Next, clone locally the repository:
 
