@@ -12,6 +12,6 @@ Cambio
 - **CORS what?**: Enables [CORS](https://developer.mozilla.org/es/docs/Web/HTTP/CORS) support and provides a JUnit-based test to prove it.
 - **No more static**: Replace the `error.html` file by a `ControllerAdvice` and provides a JUnit-based test to prove it.
 
-Repository | NIA    | GitHub Action | Has gift
-----------|--------|---------------|-----
-[motinsa](https://github.com/motinsa/lab2-web-server/tree/work) | 797610 | [![Build Status](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml)  
+Repository | NIA    | GitHub Action | Task | Has gift
+
+[motinsa](https://github.com/motinsa/lab2-web-server/tree/work) | 797610 | [![Build Status](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml)  | Test-it: Provides a JUnit-based validation of the tasks. | 
