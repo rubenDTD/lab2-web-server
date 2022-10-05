@@ -14,3 +14,4 @@ Some ideas for obtaining a :gift: if you are the first that:
 Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
  | | |
+[ibon2](https://github.com/Ibon2/lab2-web-server/tree/work) | 776561 | [![Build Status](https://github.com/Ibon2/lab2-web-server/actions/workflows/ci.yml/badge.svg)](https://github.com/Ibon2/lab2-web-server/actions/workflows/ci.yml)
