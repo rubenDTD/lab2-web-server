@@ -12,7 +12,7 @@ interface TimeProvider {
 }
 
 @Service
-class TimeService: TimeProvider {
+class TimeService : TimeProvider {
     override fun now() = LocalDateTime.now()
 }
 
