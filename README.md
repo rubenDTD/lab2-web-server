@@ -13,5 +13,6 @@ Some ideas for obtaining a :gift: if you are the first that:
 
 Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
- | | |
+[GueorguiKachan](https://github.com/GueorguiKachan/lab2-web-server/tree/work) |794999 | [![Build Status](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/CI.yml) | 
+[HugoLazaro](https://github.com/HugoLazaro/lab2-web-server/tree/work) | 801758 | [![Build Status](https://github.com/HugoLazaro/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/HugoLazaro/lab2-web-server/actions/workflows/CI.yml)
 [ibon2](https://github.com/Ibon2/lab2-web-server/tree/work) | 776561 | [![Build Status](https://github.com/Ibon2/lab2-web-server/actions/workflows/CI.yml/badge.svg)](https://github.com/Ibon2/lab2-web-server/actions/workflows/CI.yml)
