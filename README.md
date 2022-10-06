@@ -1,4 +1,4 @@
-# Web Engineering 2022-2023 / Lab1 Git Race
+# Web Engineering 2022-2023 / Lab2 Web Server
 
 Please, go to the [GUIDE](docs/GUIDE.md) in order to get the instructions for this assignment.
 
@@ -13,4 +13,5 @@ Some ideas for obtaining a :gift: if you are the first that:
 
 Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
+[GueorguiKachan](https://github.com/GueorguiKachan/lab2-web-server/tree/work) |794999 | [![Build Status](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/GueorguiKachan/lab2-web-server/actions/workflows/CI.yml) | 
 [HugoLazaro](https://github.com/HugoLazaro/lab2-web-server/tree/work) | 801758 | [![Build Status](https://github.com/HugoLazaro/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/HugoLazaro/lab2-web-server/actions/workflows/CI.yml)
