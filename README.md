@@ -13,4 +13,4 @@ Some ideas for obtaining a :gift: if you are the first that:
 
 Repository | NIA    | GitHub Action | Has gift
 ----------|--------|---------------|-----
-[PaulHuszak](https://github.com/pauk-huszak/lab2-web-server/tree/work) | 759934 | [![Build Status](https://github.com/paul-huszak/lab2-web-server/actions/workflows/CI.yml/badge.svg)](https://github.com/paul-huszak/lab2-web-server/actions/workflows/CI.yml)
+[PaulHuszak](https://github.com/pauk-huszak/lab2-web-server/tree/work) | 759934 | [![Build Status](https://github.com/pauk-huszak/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/pauk-huszak/lab2-web-server/actions/workflows/CI.yml)
