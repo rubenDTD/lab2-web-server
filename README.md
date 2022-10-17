@@ -13,4 +13,4 @@ Some ideas for obtaining a :gift: if you are the first that:
 
 Repository | NIA    | GitHub Action | Task | Has gift
 ----------|--------|---------------|-----|-----
-[motinsa](https://github.com/motinsa/lab2-web-server/tree/work) | 797610 | [![Build Status](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml/badge.svg?branch=work&event=push)](https://github.com/motinsa/lab2-web-server/actions/workflows/ci.yml)  | Test-it: Provides a JUnit-based validation of the tasks. |
+[motinsa](https://github.com/motinsa/lab2-web-server/tree/work) | 797610 | ![Build Status](https://github.com/motinsa/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/motinsa/lab2-web-server/actions/workflows/CI.yml)   | Test-it: Provides a JUnit-based validation of the tasks. |
