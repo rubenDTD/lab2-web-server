@@ -29,4 +29,4 @@ Repository | NIA    | GitHub Action | Has gift
 [Davidzf21](https://github.com/Davidzf21/lab2-web-server/tree/work) | 780500 | [![Build Status](https://github.com/Davidzf21/lab2-web-server/actions/workflows/CI.yml/badge.svg)](https://github.com/Davidzf21/lab2-web-server/actions/workflows/CI.yml)
 [Jaime1401](https://github.com/Jaime1401/lab2-web-server/tree/work) | 801965 | [![Build Status](https://github.com/Jaime1401/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/Jaime1401/lab2-web-server/actions/workflows/CI.yml)           
 [Berty980](https://github.com/Berty980/lab2-web-server/tree/work) | 735976 | [![Build Status](https://github.com/Berty980/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/Berty980/lab2-web-server/actions/workflows/CI.yml)
-
+[PilarEster](https://github.com/PilarEster/lab2-web-server/tree/work) | 800033 | [![Build Status](https://github.com/PilarEster/lab2-web-server/actions/workflows/CI.yml/badge.svg?branch=work&event=push)](https://github.com/PilarEster/lab2-web-server/actions/workflows/CI.yml)
