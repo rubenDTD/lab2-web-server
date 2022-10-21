@@ -10,34 +10,46 @@ import org.springframework.web.bind.annotation.RestController
 /*
  * https://www.baeldung.com/kotlin/spring-rest-error-handling -> source
  *
- *
  */
 
+/*
+ * An error interface to show error messages
+ *
+ */
 class ErrorMessageModel(
     var status: Int? = null,
     var message: String? = null,
-
 )
 
+class NotFoundException(message: String) : RuntimeException(message)
+
+/*
+ * Here we can define or custom error exceptions
+ *
+ */
 @ControllerAdvice
 class ExceptionControllerAdvice {
 
     @ExceptionHandler
-    fun handleIllegalStateException(ex: IllegalStateException): ResponseEntity<ErrorMessageModel> {
+    fun handleIllegalStateException(ex: NotFoundException): ResponseEntity<ErrorMessageModel> {
 
         val errorMessage = ErrorMessageModel(
             HttpStatus.NOT_FOUND.value(),
             ex.message
         )
 
-        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+        return ResponseEntity(errorMessage, HttpStatus.NOT_FOUND)
     }
 }
 
+/*
+ * Simple ErrorController to map any unregistered endpoint
+ *
+ */
 @RestController
 class ErrorController {
     @GetMapping("*")
     fun defaultError() {
-        error("Looks like you got a 404 error...again :D")
+        throw NotFoundException("Looks like you got a 404 error...again :D")
     }
 }

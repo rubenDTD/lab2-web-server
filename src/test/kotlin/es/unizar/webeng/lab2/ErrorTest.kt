@@ -22,11 +22,11 @@ class ErrorTest @Autowired constructor(
 ) {
 
     @Test
-    fun `check bad request error`() {
+    fun `check not found error`() {
         mockMvc.get("/randomURI") {
             contentType = MediaType.APPLICATION_JSON
         }
             .andDo { print() }
-            .andExpect { status { isBadRequest() } }
+            .andExpect { status { isNotFound() } }
     }
 }
