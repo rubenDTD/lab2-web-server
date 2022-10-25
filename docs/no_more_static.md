@@ -19,47 +19,41 @@ but we can define all the attributes we need.
 Next we create the class `ExceptionControllerAdvice` where we're going to define our error exceptions:
 
 ```kotlin
-@ControllerAdvice
+@RestControllerAdvice
 class ExceptionControllerAdvice {
-
-    @ExceptionHandler
-    fun handleIllegalStateException(ex: NotFoundException): ResponseEntity<ErrorMessageModel> {
-
+    @ExceptionHandler(NoHandlerFoundException::class)
+    fun handleIllegalStateException(ex: NoHandlerFoundException): ResponseEntity<ErrorMessageModel> {
         val errorMessage = ErrorMessageModel(
             HttpStatus.NOT_FOUND.value(),
             ex.message
         )
-        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+        return ResponseEntity(errorMessage, HttpStatus.NOT_FOUND)
     }
 }
 ```
-`ControllerAdvice` allow us to define a global handler for multiple Controllers. That means, you can create
+`RestControllerAdvice` allow us to define a global handler for multiple Controllers. That means, you can create
 any exception you need to catch depending on your application context. In this case, we're going to capture
-a `NotFoundException` when client tries to use a non defined endpoint and define it like this:
+a `NoHandlerFoundException` when client tries to use a non defined endpoint.
 
-```kotlin
-class NotFoundException(message: String) : RuntimeException(message) {}
+Next, we're going to indicate Spring to throw a `NoHandlerFoundException` when
+no handler is found, adding the next line to `application.properties`:
+
+```properties
+spring.mvc.throw-exception-if-no-handler-found=true
 ```
 
-
-Finally, we need to set the custom error on any unregistered endpoint. For that, we create the class
-`ErrorController` as follows:
+And disable the default configuration of the `DefaultServlet`, which searches files such as `error.html`
+to handle exceptions. We do that like this:
 
 ```kotlin
-@RestController
-class ErrorController {
-    @GetMapping("*")
-    fun defaultError() {
-        throw NotFoundException("Looks like you got a 404 error...again :D")
+@EnableWebMvc
+@Configuration
+class WebConfig : WebMvcConfigurer {
+    override fun configureDefaultServletHandling(configurer: DefaultServletHandlerConfigurer) {
+        // Do nothing instead of configurer.enable();
     }
 }
 ```
-
-`defaultError()` it's mapped with `*`, so when client tries any different endpoint from `/time` an error will
-be cast.
-
->I have not found any other way to achieve that so I'm open to suggestions.
-
 
 ## Manual Testing
 
@@ -73,18 +67,18 @@ Now we try with any endpoint, `/random` for instance, and you'll se something li
 
 ```bash
 ruben@ruben-VM:~/2022_2023/IW/lab2-web-server$ curl -k -LH "Accept: text/html,*/*;q=0.9" -i https://127.0.0.1:8443/random
-HTTP/2 400 
+HTTP/2 404 
 content-type: application/json
-date: Fri, 21 Oct 2022 09:23:10 GMT
+date: Tue, 25 Oct 2022 16:22:46 GMT
 
-{"status":404,"message":"Looks like you got a 404 error...again :D"}ruben@ruben-VM:~/2022_2023/IW/lab2-web-server$
+{"status":404,"message":"No handler found for GET /random"}ruben@ruben-VM:~/2022_2023/IW/lab2-web-server$
 ```
 
 As we can see, it works!
 
 ## JUnit + Mockk Testing
 
-Now we're going to implement a simple test with JUnit and Mockk. I have decide to use Mockk
+Now we're going to implement a simple test with JUnit and Mockk. I have decided to use Mockk
 instead Mockito because I already have worked with Mockito before, and also, from what I've read,
 Mockk was specifically done for Kotlin.
 
@@ -103,7 +97,13 @@ class ErrorTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
         }
             .andDo { print() }
-            .andExpect { status { isNotFound() } }
+            .andExpect {
+                status { isNotFound() }
+                content {
+                    contentType(MediaType.APPLICATION_JSON)
+                    json(ERROR_RESPONSE_BODY(404, "No handler found for GET /randomURI"))
+                }
+            }
     }
 }
 ```
@@ -113,9 +113,23 @@ class ErrorTest @Autowired constructor(
 `@AutoConfigureMockMvc` enables autoconfiguration to `mockMvc`, which it's going to be used
 to fake a `GET` request.
 
-
 Function `check not found error` use `mockMvc` to execute a fake request to `/randomURI`.
-We're telling that we want to print the request's result and that we expect `404 NOT FOUND`.
+We're telling that we want to print the request's result, that we expect `404 NOT FOUND` and
+JSON content must be the HTTP error code and the custom message. I have defined an `ERROR_RESPONSE_BODY`
+for this:
+
+```kotlin
+private val ERROR_RESPONSE_BODY = { status: Int, message: String ->
+    """
+    {"status":$status,"message":"$message"}
+    """
+}
+```
+But the next line do the same:
+
+```kotlin
+json("{status: 404, message: \"No handler found for GET /randomURI\"}")
+```
 
 We get the next response when running the test:
 
@@ -125,12 +139,11 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Content-Type:"application/json"]
      Content type = application/json
-             Body = {"status":404,"message":"Looks like you got a 404 error...again :D"}
+             Body = {"status":404,"message":"No handler found for GET /randomURI"}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
 BUILD SUCCESSFUL in 5s
-4 actionable tasks: 1 executed, 3 up-to-date
 ```
 
 

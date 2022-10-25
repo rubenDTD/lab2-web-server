@@ -15,6 +15,12 @@ import org.springframework.test.web.servlet.get
  *
  */
 
+private val ERROR_RESPONSE_BODY = { status: Int, message: String ->
+    """
+    {"status":$status,"message":"$message"}
+    """
+}
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class ErrorTest @Autowired constructor(
@@ -27,6 +33,12 @@ class ErrorTest @Autowired constructor(
             contentType = MediaType.APPLICATION_JSON
         }
             .andDo { print() }
-            .andExpect { status { isNotFound() } }
+            .andExpect {
+                status { isNotFound() }
+                content {
+                    contentType(MediaType.APPLICATION_JSON)
+                    json(ERROR_RESPONSE_BODY(404, "No handler found for GET /randomURI"))
+                }
+            }
     }
 }

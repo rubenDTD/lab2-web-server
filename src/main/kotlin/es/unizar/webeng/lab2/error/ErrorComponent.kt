@@ -1,11 +1,14 @@
 package es.unizar.webeng.lab2.error
 
+import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.servlet.NoHandlerFoundException
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /*
  * https://www.baeldung.com/kotlin/spring-rest-error-handling -> source
@@ -21,35 +24,30 @@ class ErrorMessageModel(
     var message: String? = null,
 )
 
-class NotFoundException(message: String) : RuntimeException(message)
+/*
+ * Override default configuration of DefaultServlet to disable the files' search like error.html
+ *
+ */
+@EnableWebMvc
+@Configuration
+class WebConfig : WebMvcConfigurer {
+    override fun configureDefaultServletHandling(configurer: DefaultServletHandlerConfigurer) {
+        // Do nothing instead of configurer.enable();
+    }
+}
 
 /*
  * Here we can define or custom error exceptions
  *
  */
-@ControllerAdvice
+@RestControllerAdvice
 class ExceptionControllerAdvice {
-
-    @ExceptionHandler
-    fun handleIllegalStateException(ex: NotFoundException): ResponseEntity<ErrorMessageModel> {
-
+    @ExceptionHandler(NoHandlerFoundException::class)
+    fun handleIllegalStateException(ex: NoHandlerFoundException): ResponseEntity<ErrorMessageModel> {
         val errorMessage = ErrorMessageModel(
             HttpStatus.NOT_FOUND.value(),
             ex.message
         )
-
         return ResponseEntity(errorMessage, HttpStatus.NOT_FOUND)
-    }
-}
-
-/*
- * Simple ErrorController to map any unregistered endpoint
- *
- */
-@RestController
-class ErrorController {
-    @GetMapping("*")
-    fun defaultError() {
-        throw NotFoundException("Looks like you got a 404 error...again :D")
     }
 }
